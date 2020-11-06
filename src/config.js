@@ -1,16 +1,25 @@
 import { createChatBotMessage } from "react-chatbot-kit";
-
+import Options from './components/options'
 const config = {
   initialMessages: [createChatBotMessage(`
-  નમસ્તે!! હું આપની શું મદદ કરી શકું?`)],
+  Hello! How can I help you?`,{
+    widget: "options",
+  })],
+  botName:"Healthcare Bot",
   customStyles: {
     botMessageBox: {
-      backgroundColor: "#276B1E"
+      backgroundColor: "#3972db"
         },
     chatButton: {
-      backgroundColor: "#276B1A",
+      backgroundColor: "#3972db",
     },
-  }
+  },
+  widgets: [
+    {
+      widgetName: "options",
+      widgetFunc: (props) => <Options {...props} />,
+    }
+  ]
 }
 
 export default config
