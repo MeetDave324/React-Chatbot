@@ -1,4 +1,3 @@
-import axios from 'axios';
 class MessageParser {
     constructor(actionProvider, state) {
       this.actionProvider = actionProvider;
@@ -6,11 +5,7 @@ class MessageParser {
     }
 
     parse(message) {
-      // const lowerCaseMessage = message.toLowerCase()
-      //API function here
-
-      this.actionProvider.function1(message)
-      
+      this.actionProvider.function1(message)  
     }
 
   }

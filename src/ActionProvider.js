@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-// import translate from 'google-translate-api';
 class ActionProvider{
     constructor(createChatBotMessage, setStateFunc, createClientMessage) {
       this.createChatBotMessage = createChatBotMessage;
       this.setState = setStateFunc;
       this.createClientMessage = createClientMessage;
-
+      this.state={
+        messages:""
+      };
     }
     greet(str) {
       const greetingMessage = this.createChatBotMessage(str);
@@ -79,6 +80,7 @@ class ActionProvider{
       this.setState(prevState => ({
         ...prevState, messages: [...prevState.messages, message]
       }))
+      console.log(this.state.messages)
     }
   }
   
