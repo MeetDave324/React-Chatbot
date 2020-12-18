@@ -1,5 +1,7 @@
 import { createChatBotMessage } from "react-chatbot-kit";
 import Options from './components/options'
+import SpeechButton from './components/speechButton'
+
 const config = {
   initialMessages: [createChatBotMessage(`
   Hello! How can I help you?`,{
@@ -18,6 +20,10 @@ const config = {
     {
       widgetName: "options",
       widgetFunc: (props) => <Options {...props} />,
+    },
+    {
+      widgetName: "speech",
+      widgetFunc: (props) => <SpeechButton {...props} />,
     }
   ]
 }

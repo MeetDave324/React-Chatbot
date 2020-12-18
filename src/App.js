@@ -42,6 +42,7 @@ import MessageParser from './MessageParser';
 import config from './config';
 
 function App() {
+  localStorage.setItem("flag",0);
   return (
     <div className="App">
       <header className="App-header">
