@@ -45,6 +45,13 @@ class ActionProvider{
       console.log(localStorage.getItem("language"))
     };
 
+
+    async explore(){
+      localStorage.setItem('language','explore');
+      const message = this.createChatBotMessage('Explore your health');
+      this.updateChatbotState(message);
+    }
+
     async translate(lowerCaseMessage){
       console.log("Not Translated ",lowerCaseMessage)
       lowerCaseMessage=await axios.get("http://127.0.0.1:8000/translate/",{
@@ -95,13 +102,26 @@ class ActionProvider{
     async function1(lowerCaseMessage){
       //translate api
       try{
+        if(localStorage.getItem('language')=="explore"){
+          console.log("Exploring ", lowerCaseMessage)
+          lowerCaseMessage = await axios.get("http://127.0.0.1:8000/explore/",{
+          params:{
+            text:lowerCaseMessage
+          }
+        }) 
+        console.log(lowerCaseMessage.data.text)
+          //create msg
+          const msg = this.createChatBotMessage(lowerCaseMessage.data.text);
+          this.updateChatbotState(msg)
+        
+        }
+        else{
         if (localStorage.getItem("language")!="en")
         {
           lowerCaseMessage=await this.translate(lowerCaseMessage);
         }
         console.log("Translated ",lowerCaseMessage)
         lowerCaseMessage=lowerCaseMessage.toLowerCase();
-        console.log("Lower case"+lowerCaseMessage);
 
         var data=await axios.get("http://127.0.0.1:8000/predict/",{
           params:{
@@ -110,11 +130,14 @@ class ActionProvider{
           }
         })
         console.log(data)
-        this.greet(data.data.data)
 
-        this.textToSpeech(data.data.data)
+        // this.greet(data.data.data)
+
+        // this.textToSpeech(data.data.data)
 
         if(data.data.description!==""){
+          this.greet(data.data.data)
+          this.textToSpeech(data.data.data)
           const greetingMessage = this.createChatBotMessage(data.data.description);
           this.updateChatbotState(greetingMessage)
         }
@@ -122,6 +145,12 @@ class ActionProvider{
           const greetingMessage = this.createChatBotMessage(data.data.precautions);
           this.updateChatbotState(greetingMessage)
         }
+        else{
+          this.greet(data.data.data)
+          this.textToSpeech(data.data.data)
+
+        }
+      }
       }
       catch(err){
         console.log(err)

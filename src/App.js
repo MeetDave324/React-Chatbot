@@ -47,7 +47,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Chatbot config={config} actionProvider={ActionProvider} 	 messageParser={MessageParser} />
+        <a className="record-button" href="http://127.0.0.1:8000/admin/chatbot/record/">Click here to view past record</a>
       </header>
+      <div>
+        
+      </div>
     </div>
   );
 }

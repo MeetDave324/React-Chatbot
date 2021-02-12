@@ -1,8 +1,16 @@
 import React from "react";
 const SpeechButton = (props) => {
+  var speakText='Speak'
+    if(localStorage.getItem('language')=='hi'){
+      speakText= 'बोले'
+    }
+    else if(localStorage.getItem('language')=='gu'){
+      speakText= 'બોલો'
+    }
+      
     const options = [
       {
-        text: "Speak",
+        text: speakText,
         handler: () => {
             props.actionProvider.speechToText()},
         id: 1,

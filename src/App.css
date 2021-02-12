@@ -27,7 +27,18 @@
 .App-link {
   color: #61dafb;
 }
-
+.record-button {
+  display: block;
+  width: 282px;
+  height: 15px;
+  background: #087be7bb;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  line-height: 25px;
+  font-size: 15px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
