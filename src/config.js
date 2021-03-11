@@ -1,6 +1,7 @@
 import { createChatBotMessage } from "react-chatbot-kit";
 import Options from './components/options'
 import SpeechButton from './components/speechButton'
+import UploadButton from './components/uploadFile'
 
 const config = {
   initialMessages: [createChatBotMessage(`
@@ -24,6 +25,10 @@ const config = {
     {
       widgetName: "speech",
       widgetFunc: (props) => <SpeechButton {...props} />,
+    },
+    {
+      widgetName: "upload",
+      widgetFunc: (props) => <UploadButton {...props} />,
     }
   ]
 }

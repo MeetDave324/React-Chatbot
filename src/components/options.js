@@ -10,7 +10,7 @@ const Options = (props) => {
     },
     { text: "English", handler: () => props.actionProvider.handleLanguage("en"), id: 2 },
     { text: "ગુજરાતી",handler: () => props.actionProvider.handleLanguage("gu"), id: 3 },
-    { text: "Explore your health",handler: () => props.actionProvider.explore(), id: 4 },
+    { text: "Detect Cancer",handler: () => props.actionProvider.explore(), id: 4 },
   ];
 
   const buttonsMarkup = options.map((option) => (

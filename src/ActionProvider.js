@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class ActionProvider{
     constructor(createChatBotMessage, setStateFunc, createClientMessage) {
@@ -46,10 +47,8 @@ class ActionProvider{
     };
 
 
-    async explore(){
-      localStorage.setItem('language','explore');
-      const message = this.createChatBotMessage('Explore your health');
-      this.updateChatbotState(message);
+    explore(){
+      window.location.href='http://localhost:3000/cancer'
     }
 
     async translate(lowerCaseMessage){
